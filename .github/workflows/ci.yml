@@ -9,7 +9,7 @@ jobs:
     run-on: ubuntu-lastest
     container: 
       image: node:20
-    step:
+    steps:
       - user: actions/checkout@v3
         with: 
           node-version: 20
