@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    run-on: ubuntu-lastest
+    runs-on: ubuntu-lastest
     container: 
       image: node:20
     steps:
