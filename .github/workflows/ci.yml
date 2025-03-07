@@ -10,7 +10,7 @@ jobs:
     container: 
       image: node:20
     steps:
-      - user: actions/checkout@v3
+      - uses: actions/checkout@v3
         with: 
           node-version: 20
       - run: npm ci
