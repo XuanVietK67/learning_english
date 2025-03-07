@@ -1,0 +1,18 @@
+name: Learning English
+
+on:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  test:
+    run-on: ubuntu-lastest
+    container: 
+      image: node:20
+    step:
+      - user: actions/checkout@v3
+        with: 
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
