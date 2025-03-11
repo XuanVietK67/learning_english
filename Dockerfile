@@ -1,13 +1,25 @@
-FROM node:20-alpine
+# FROM node:20-alpine
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package*.json .
+# COPY package*.json .
 
-RUN npm install
+# RUN npm install
 
-COPY . .
+# COPY . .
 
-EXPOSE 5173
+# EXPOSE 5173
 
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+FROM jenkins/jenkins:2.492.2-jdk17
+USER root
+RUN apt-get update && apt-get install -y lsb-release
+RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+  https://download.docker.com/linux/debian/gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+  https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN apt-get update && apt-get install -y docker-ce-cli
+USER jenkins
+RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"

@@ -25,7 +25,7 @@ const App = () => {
   };
   return (
     <div>
-      csdn
+      csdn xuan viet
       <div className="grid grid-cols-3 grid-rows-1 gap-3">
         <img src={Cute} />
         <img src={Girl} />
